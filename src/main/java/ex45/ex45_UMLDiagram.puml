@@ -2,7 +2,7 @@
 class OutputFile{
 __private data__
 String filename;
-__Contructor__
+__Constructor__
 +public OutputFile()
 ..Simple Setter..
 +public void setOutputFile(String filename)

@@ -1,0 +1,12 @@
+@startuml
+class Phrase{
+__private data__
+String phrase;
+__Constructor__
++public Phrase()
+..Simple Setter..
++public void setPhrase(String phrase)
+..Methods..
++public String getPhrase()
+}
+@enduml

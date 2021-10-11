@@ -1,0 +1,19 @@
+Ex46 Pseudocode
+
+1)Create a method to sort a map by values in ascending order
+
+2)Create a Phrase class to set and get the content of the file
+
+3)Instantiate the file class, Phrase object
+
+4)Read the content of the file and lower case it
+
+5)Read again but now stopping on each word
+
+6)Check if the word exists. If yes, increment the value in <key,value>. If not, create a <key,1> for it
+
+7)Convert the map to an iterable type -> array
+
+8)Iterate the array from top to bottom(since I sorted in ascending order)
+
+9)Print the histogram for each word in a formatted way
