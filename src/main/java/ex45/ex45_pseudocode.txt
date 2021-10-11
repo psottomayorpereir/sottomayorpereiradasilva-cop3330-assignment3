@@ -1,0 +1,11 @@
+Ex45 Pseudocode
+
+1)Create an OutputFile class to set and get output filename
+
+2)Read the lines of the file and append to a buffer. Convert it to String
+
+3)Replace the "utilize" occurrences throughout the file with "use"
+
+4)Ask for the user for an output filename
+
+5)Write the output with the changes made to a file named with whatever the user entered

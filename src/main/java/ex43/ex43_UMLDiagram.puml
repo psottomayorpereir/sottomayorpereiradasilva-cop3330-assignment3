@@ -1,0 +1,14 @@
+@startuml
+class Website{
+__private data__
+String name;
+String author;
+__Constructor__
++public Website()
+..Simple Setter..
++public void setWebsite(String name, String author)
+..Methods..
++public String getName()
++public String getAuthor()
+}
+@enduml

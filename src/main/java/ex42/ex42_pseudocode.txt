@@ -1,0 +1,11 @@
+Ex42 Pseudocode
+
+1)Create an Employee class to set and get Last,First,Salary
+
+2)Output the first lines of the formatted table(the heading)
+
+3)Read line/Employee information and set its Last,First,Salary by calling Employee class
+
+4)Output the formatted information for that employee
+
+5)Repeat steps 3 and 4 until reach the end of file

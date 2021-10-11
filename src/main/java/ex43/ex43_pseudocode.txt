@@ -1,0 +1,13 @@
+Ex43 Pseudocode
+
+1)Create a Website class to set and get website name and author
+
+2)Ask for the user to enter website name, author, javascript folder or not, and css folder or not
+
+3)Set the website information by calling the Website class
+
+4)Create a html file called index, in which the header is the website name and <meta> tag is the author
+
+5)If the user wants to create a folder for JavaScript, create it
+
+6)If the user wants to create a folder for CSS, create it

@@ -1,0 +1,12 @@
+@startuml
+class Name{
+__private data__
+String name;
+__Constructor__
++public Name()
+..Simple Setter..
++public void setFirstLast(String name)
+..Methods..
++public String getName()
+}
+@enduml

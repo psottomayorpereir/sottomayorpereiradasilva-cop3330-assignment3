@@ -1,0 +1,17 @@
+@startuml
+class Employee{
+__private data__
+String last;
+String first;
+String[] ans;
+int salary;
+__Constructor__
++public Employee()
+..Simple Setter..
++public void setEmployee(String first, String last, int salary)
+..Getter Methods..
++public String getFirstName()
++public String getLastName()
++public int getSalary()
+}
+@enduml
