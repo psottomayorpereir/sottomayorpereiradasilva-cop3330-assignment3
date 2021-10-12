@@ -1,11 +1,15 @@
 Ex44 Pseudocode
 
-1)Create a Product class with set and get for name, price, and quantity
+1)Create a Product__1 class with set and get for name, price, and quantity
 
-2)Read the file using JSON parser
+2)Create a Product class with set and get for a list of products
 
-3)User methods to search for the name of the product entered
+3)Read the file using JSON parser (gson)
 
-4)If found, output its name, price, and quantity
+4)Make a list of product objects
 
-5)If not found, state the product was not found. Ask for a product name again
+5)Ask user for a product name
+
+6)If found in the list, output name, price, and quantity of the product
+
+7)If not found, display a sorry message and keep asking for a product name

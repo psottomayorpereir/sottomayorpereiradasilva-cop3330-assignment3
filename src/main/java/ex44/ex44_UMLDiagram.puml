@@ -1,13 +1,25 @@
 @startuml
 class Product{
 __private data__
+List<Product__1> products;
+__Constructor__
++public Product()
+..Simple Setter..
++public void setProducts(List<Product__1> products)
+..Methods..
++public List<Product__1> getProducts()
+}
+class Product__1{
+__private data__
 String name;
 double price;
 int quantity;
 __Constructor__
-+public Product()
++public Product__1()
 ..Simple Setter..
-+public void setProduct(String name, double price, int quantity)
++public void setName(String name)
++public void setPrice(double price)
++public void setQuantity(int quantity)
 ..Methods..
 +public String getName()
 +public double getPrice()

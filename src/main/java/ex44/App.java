@@ -21,83 +21,120 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.google.gson.*;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 
 public class App
 {
 
-    static class Product{
-        //private fields
-        private String name;
-        private double price;
-        private int quantity;
+    static class Product {
 
-        public Product() {
+        @SerializedName("products")
+        @Expose
+        //private fields
+        private List<Product__1> products;
+
+        public Product(){
             //constructor
-            this.name="name";
+            this.products=null;
+        }
+
+        public List<Product__1> getProducts() {
+            //get List
+            return products;
+        }
+
+        public void setProducts(List<Product__1> products) {
+            //set List
+            this.products = products;
+        }
+
+    }
+
+    public class Product__1 {
+
+        //private fields
+        @SerializedName("name")
+        @Expose
+        private String name;
+        @SerializedName("price")
+        @Expose
+        private Double price;
+        @SerializedName("quantity")
+        @Expose
+        private Integer quantity;
+
+        public Product__1(){
+            //constructor
+            this.name="";
             this.price=0.0;
             this.quantity=0;
         }
 
-        public void setProduct(String name, double price, int quantity){
-            this.name=name;
-            this.price=price;
-            this.quantity=quantity;
+        public String getName() {
+            //get product name
+            return name;
         }
 
-        public String getName(){
-            //return name of the website
-            return this.name;
+        public void setName(String name) {
+            //set product name
+            this.name = name;
         }
 
-        public double getPrice(){
-            //return Author of the website
-            return this.price;
+        public Double getPrice() {
+            //get product price
+            return price;
         }
 
-        public int getQuantity(){
-            //return Author of the website
-            return this.quantity;
+        public void setPrice(Double price) {
+            //set product price
+            this.price = price;
+        }
+
+        public Integer getQuantity() {
+            //get product quantity
+            return quantity;
+        }
+
+        public void setQuantity(Integer quantity) {
+            //set product quantity
+            this.quantity = quantity;
         }
 
     }
 
     public static void main( String[] args ) throws Exception
     {
-        String path = "exercise44_input.json";
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        ArrayList<String> names = new ArrayList<String>();
-        ArrayList<String> price = new ArrayList<String>();
-        ArrayList<String> quantity = new ArrayList<String>();
+        //Scanner and BufferedReader
+        Scanner sc= new Scanner(System.in);
+        BufferedReader br =null;
+        //declare variables
         String word="";
-        int size=0;
-
+        boolean answer=false;
         Gson gson = new Gson();
-
-        Object json = gson.fromJson(bufferedReader, Object.class);
-
-        String content=json.toString();
-
-        System.out.println(content);
-
-        Pattern pttrn = Pattern.compile("[a-z|A-Z]+");
-        Matcher mtchr = pttrn.matcher(content);
-        while(mtchr.find()){
-            word = mtchr.group();
-            names.add(word);
+        br=new BufferedReader((new FileReader("exercise44_input.json")));
+        Product product = gson.fromJson(br, Product.class);
+        //check if the list exists
+        if(product!=null){
+            //while the user does not enter a product name in the inventory, keep asking for the name
+            while(answer==false){
+                //ask user to input product name
+                System.out.print("What is the product name? ");
+                word=sc.nextLine();
+                //'iterate' the list
+                //if product found, print its name,price,and quantity. End while loop
+                //if not found,show a sorry message, and keep doing the while loop
+                for(Product__1 t : product.getProducts()){
+                    if(word.equals(t.getName())){
+                        System.out.println("Name: "+t.getName()+"\nPrice: "+t.getPrice()+"\nQuantity: "+t.getQuantity());
+                        answer=true;
+                    }
+                }
+                if(answer==false){
+                    System.out.println("Sorry, that product was not found in our inventory.");
+                }
+            }
         }
-        System.out.println(names);
-        size=names.toArray().length;
-        //while(size>0){
-            names.remove("{");
-            names.remove("products");
-            //names.remove("]");
-            //names.remove("quantity");
-            //size--;
-        //}
-        System.out.println(names);
-        size=names.toArray().length;
-
-
     }
 }
