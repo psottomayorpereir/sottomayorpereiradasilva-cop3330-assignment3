@@ -4,58 +4,99 @@
  */
 package ex44;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import java.io.File;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 
 public class App
 {
-    static class Employee{
+
+    static class Product{
         //private fields
-        private String last;
-        private String first;
-        private String[] ans;
-        private int salary;
+        private String name;
+        private double price;
+        private int quantity;
 
-        public Employee() {
+        public Product() {
             //constructor
-            this.last="";
-            this.first="";
-            this.ans = new String[2];
-            this.salary=0;
+            this.name="name";
+            this.price=0.0;
+            this.quantity=0;
         }
 
-
-        public void setEmployee(String first, String last, int salary){
-            //set Employee information
-            this.first=first;
-            this.last=last;
-            this.salary=salary;
+        public void setProduct(String name, double price, int quantity){
+            this.name=name;
+            this.price=price;
+            this.quantity=quantity;
         }
 
-        public String getFirstName(){
-            //return first name of Employee
-            return this.first;
+        public String getName(){
+            //return name of the website
+            return this.name;
         }
 
-        public String getLastName(){
-            //return last name of Employee
-            return this.last;
+        public double getPrice(){
+            //return Author of the website
+            return this.price;
         }
 
-        public int getSalary(){
-            //return salary of Employee
-            return this.salary;
+        public int getQuantity(){
+            //return Author of the website
+            return this.quantity;
         }
-
 
     }
 
     public static void main( String[] args ) throws Exception
     {
-        //instantiate the file class
-        Scanner sc = new Scanner(new File ("exercise44_input.txt"));
+        String path = "exercise44_input.json";
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> price = new ArrayList<String>();
+        ArrayList<String> quantity = new ArrayList<String>();
+        String word="";
+        int size=0;
+
+        Gson gson = new Gson();
+
+        Object json = gson.fromJson(bufferedReader, Object.class);
+
+        String content=json.toString();
+
+        System.out.println(content);
+
+        Pattern pttrn = Pattern.compile("[a-z|A-Z]+");
+        Matcher mtchr = pttrn.matcher(content);
+        while(mtchr.find()){
+            word = mtchr.group();
+            names.add(word);
+        }
+        System.out.println(names);
+        size=names.toArray().length;
+        //while(size>0){
+            names.remove("{");
+            names.remove("products");
+            //names.remove("]");
+            //names.remove("quantity");
+            //size--;
+        //}
+        System.out.println(names);
+        size=names.toArray().length;
 
 
     }

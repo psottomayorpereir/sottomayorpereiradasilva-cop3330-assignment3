@@ -1,0 +1,16 @@
+@startuml
+class Product{
+__private data__
+String name;
+double price;
+int quantity;
+__Constructor__
++public Product()
+..Simple Setter..
++public void setProduct(String name, double price, int quantity)
+..Methods..
++public String getName()
++public double getPrice()
++public int getQuantity()
+}
+@enduml
